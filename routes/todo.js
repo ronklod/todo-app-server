@@ -4,7 +4,7 @@ var sequelize = require('../DAL/sequelizeObj');
 const {QueryTypes} = require("sequelize");
 
 
-/* GET all todo's from the DB. */
+/* save a new task in the DB. */
 router.post('/', async function(req, res, next) {
 
     //Performs a sync betweent the DB and our model, check for example the the table exsits,etc..
@@ -22,6 +22,20 @@ router.post('/', async function(req, res, next) {
     });
 });
 
+//adding the ability to update a task status, to complete
+router.put('/:taskId', async function(req, res, next) {
+    await sequelize.models.todo.update(
+        { isCompleted:true },
+         {
+             where: {id: req.params['taskId']}
+         }).then(result =>{
+              res.send(204);
+        }).catch(err =>{
+            res.send(500);
+    })
+
+});
+
 // router.get('/maxId',async function(req,res) {
 //
 //     await sequelize.models.todo.findAll({
@@ -33,6 +47,7 @@ router.post('/', async function(req, res, next) {
 //});
 
 
+//Get all the tags from the DB
 router.get('/',async function(req,res) {
 
     await sequelize.models.todo.findAll().then(result => {
