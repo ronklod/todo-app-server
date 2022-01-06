@@ -4,7 +4,7 @@ var sequelize = require('../DAL/sequelizeObj');
 const {QueryTypes} = require("sequelize");
 
 
-/* GET users listing. */
+/* GET all todo's from the DB. */
 router.post('/', async function(req, res, next) {
 
     //Performs a sync betweent the DB and our model, check for example the the table exsits,etc..
