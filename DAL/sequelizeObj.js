@@ -5,7 +5,7 @@ const { Sequelize,QueryTypes } = require('sequelize');
 // const sequelize = new Sequelize(process.env.DB_CONNECTION_URL);
 const sequelize = new Sequelize("test_db", "sa",
     "Seebo19!!", {
-        host: "localhost",
+        host: process.env.SQL_SERVER_ADDRESS || "localhost",
         port: "1433",
         dialect: "mssql",
         operatorsAliases: false,
@@ -27,7 +27,6 @@ const modelDefiners = [
 for (const modelDefiner of modelDefiners) {
     modelDefiner(sequelize);
 }
-
 
 // We export the sequelize connection instance to be used around our app.
 module.exports = sequelize;
