@@ -8,11 +8,12 @@ pipeline {
             steps {
                 sh 'node --version'
                 sh 'npm install'
+                sh 'npm i forever'
             }
         }
         stage('run'){
             steps {
-                sh 'nohup  npm start'
+                sh 'forever npm start'
             }
         }
     }
