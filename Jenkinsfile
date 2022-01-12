@@ -8,7 +8,7 @@ pipeline {
             steps {
                 sh 'node --version'
                 sh 'npm install'
-                sh 'node install forever -g'
+                sh 'npm install forever -g'
             }
         }
         stage('run'){
