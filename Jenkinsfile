@@ -11,12 +11,12 @@ pipeline {
 //             }
 //         }
         stage('build docker'){
-            steps{
+            //steps{
                 //sh '/Applications/Docker.app/Contents/Resources/bin/docker images'
                 //sh '/Applications/Docker.app/Contents/Resources/bin/docker build --tag jenkins-todo-app .'
                 //echo $PATH
                 //sh 'docker build --tag jenkins-todo-app .'
-            }
+            //}
         }
         stage('run docker'){
             steps{
