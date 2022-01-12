@@ -10,33 +10,12 @@ pipeline {
                 //sh 'npm install'
             }
         }
-        stage('build docker'){
-            steps{
-                //echo $PATH
-                //sh 'docker build --tag jenkins-todo-app .'
-            }
+//         stage('build docker'){
 //             steps{
-//                 script {
-//                     try {
-//                             sh 'forever stop bin/www'
-//                         }
-//                         catch (exc) {
-//                             echo 'application not running'
-//
-//                     }
-//                 }
+//                 //echo $PATH
+//                 //sh 'docker build --tag jenkins-todo-app .'
 //             }
-        }
-//         stage ('deoply docker'){
-//             stage(
-//                 sh 'docker run -p 8888:3001 --name jenkins-todo-app-test -d jenkins-todo-app'
-//             )
 //         }
-//         stage('Starting a new App'){
-//                     steps {
-//                         sh 'forever start bin/www'
-//
-//                     }
-//                 }
+
     }
 }
