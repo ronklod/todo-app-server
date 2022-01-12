@@ -13,7 +13,7 @@ pipeline {
         }
         stage('build docker'){
             steps{
-                echo '$PATH'
+                echo $PATH
                 //sh 'docker build --tag jenkins-todo-app .'
             }
 //             steps{
