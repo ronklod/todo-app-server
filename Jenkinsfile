@@ -27,11 +27,11 @@ pipeline {
 //                 }
 //             }
         }
-        stage ('deoply docker'){
-            stage(
-                sh 'docker run -p 8888:3001 --name jenkins-todo-app-test -d jenkins-todo-app'
-            )
-        }
+//         stage ('deoply docker'){
+//             stage(
+//                 sh 'docker run -p 8888:3001 --name jenkins-todo-app-test -d jenkins-todo-app'
+//             )
+//         }
 //         stage('Starting a new App'){
 //                     steps {
 //                         sh 'forever start bin/www'
