@@ -12,13 +12,15 @@ pipeline {
             }
         }
         stage('Stopping an Exisitng running App'){
-            try {
-                        sh 'forever stop /bin/www'
-                }
-                catch (exc) {
-                    echo 'application not running'
+            step{
+                try {
+                            sh 'forever stop /bin/www'
+                    }
+                    catch (exc) {
+                        echo 'application not running'
 
                 }
+            }
         }
         stage('Starting a new App'){
                     steps {
