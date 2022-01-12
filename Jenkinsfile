@@ -4,17 +4,24 @@ pipeline {
      tools {nodejs "nodejs"}
 
     stages {
-        stage('build') {
+        stage('Build') {
             steps {
                 sh 'node --version'
                 sh 'npm install'
                 sh 'npm install forever -g'
             }
         }
-        stage('run'){
+        stage('Stopping an Exisitng running App'){
             steps {
-                sh 'npm start'
+                sh 'forever stop /bin/www'
+
             }
         }
+        stage('Starting a new App'){
+                    steps {
+                        sh 'forever start /bin/www'
+
+                    }
+                }
     }
 }
