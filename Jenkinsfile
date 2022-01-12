@@ -13,7 +13,7 @@ pipeline {
         }
         stage('run'){
             steps {
-                sh 'forever start ./bin/www'
+                sh 'npm start'
             }
         }
     }
