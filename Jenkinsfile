@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Run docker container'){
             steps{
-                sh '/Applications/Docker.app/Contents/Resources/bin/docker run -p 8082:3001 --name jenkins-todo-app -d jenkins-todo-app'
+                sh '/Applications/Docker.app/Contents/Resources/bin/docker run -p 8082:3001 --name jenkins-todo-app -d jenkins-todo-app:1.0'
                 //echo $PATH
                 echo 'browse to http://localhost:8082'
             }
