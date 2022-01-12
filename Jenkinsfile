@@ -8,12 +8,13 @@ pipeline {
             steps {
                 sh 'node --version'
                 sh 'npm install'
-                sh 'npm install forever -g'
+                //sh 'npm install forever -g'
             }
         }
         stage('build docker'){
             steps{
-                sh 'docker build --tag jenkins-todo-app .'
+                echo '$PATH'
+                //sh 'docker build --tag jenkins-todo-app .'
             }
 //             steps{
 //                 script {
