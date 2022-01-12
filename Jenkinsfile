@@ -15,7 +15,7 @@ pipeline {
             steps{
                 script {
                     try {
-                            sh 'forever stop /bin/www'
+                            sh 'forever stop bin/www'
                         }
                         catch (exc) {
                             echo 'application not running'
@@ -26,7 +26,7 @@ pipeline {
         }
         stage('Starting a new App'){
                     steps {
-                        sh 'forever start /bin/www'
+                        sh 'forever start bin/www'
 
                     }
                 }
