@@ -10,12 +10,13 @@ pipeline {
                 //sh 'npm install'
             }
         }
-//         stage('build docker'){
-//             steps{
-//                 //echo $PATH
-//                 //sh 'docker build --tag jenkins-todo-app .'
-//             }
-//         }
+        stage('build docker'){
+            steps{
+                sh '/Applications/Docker.app/Contents/Resources/bin/docker images'
+                //echo $PATH
+                //sh 'docker build --tag jenkins-todo-app .'
+            }
+        }
 
     }
 }
