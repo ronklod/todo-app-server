@@ -4,12 +4,12 @@ pipeline {
      tools {nodejs "nodejs"}
 
     stages {
-        stage('pre-build') {
-            steps {
-                sh 'node --version'
-                sh 'npm install'
-            }
-        }
+//         stage('pre-build') {
+//             steps {
+//                 sh 'node --version'
+//                 sh 'npm install'
+//             }
+//         }
         stage('build docker'){
             steps{
                 //sh '/Applications/Docker.app/Contents/Resources/bin/docker images'
