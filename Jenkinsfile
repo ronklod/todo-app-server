@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Build docker image'){
             steps{
-                sh '/Applications/Docker.app/Contents/Resources/bin/docker build --tag jenkins-todo-app .'
+                sh '/Applications/Docker.app/Contents/Resources/bin/docker build --tag jenkins-todo-app:1.0 .'
             }
         }
         stage('Run docker container'){
