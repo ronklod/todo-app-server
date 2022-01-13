@@ -1,3 +1,5 @@
+def image_tag = jenkins-todo-app:2.0
+def container_name =  jenkins-todo-app-2
 pipeline {
     agent any
 
@@ -13,15 +15,16 @@ pipeline {
         stage ('Delete Old Containers and Images'){
             steps{
                 script{
-                        def existingContainer = sh script: '/Applications/Docker.app/Contents/Resources/bin/docker ps -a -q  -f name=jenkins-todo-app-2 || echo error', returnStdout: true
+                        //def existingContainer = sh script: '/Applications/Docker.app/Contents/Resources/bin/docker ps -a -q  -f name=jenkins-todo-app-2 || echo error', returnStdout: true
+                        def existingContainer = sh script: '/Applications/Docker.app/Contents/Resources/bin/docker ps -a -q  -f name=$container_name || echo error', returnStdout: true
                         echo "existing container:   $existingContainer"
                         if (existingContainer != ""){
 
                             echo 'stopping running containers....'
 
-                            def stopped =  sh script:  '/Applications/Docker.app/Contents/Resources/bin/docker stop jenkins-todo-app-2 || echo error', returnStdout: true
+                            def stopped =  sh script:  '/Applications/Docker.app/Contents/Resources/bin/docker stop $container_name || echo error', returnStdout: true
 
-                            def delete_container = sh script: '/Applications/Docker.app/Contents/Resources/bin/docker rm jenkins-todo-app-2 || echo error', returnStdout: true
+                            def delete_container = sh script: '/Applications/Docker.app/Contents/Resources/bin/docker rm $container_name || echo error', returnStdout: true
 
                             //if(stooped != ""){
                             def delete_image = sh script: '/Applications/Docker.app/Contents/Resources/bin/docker rmi jenkins-todo-app:2.0 || echo error', returnStdout: true
