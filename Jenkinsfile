@@ -1,5 +1,5 @@
-def image_tag = jenkins-todo-app:2.0
-def container_name =  jenkins-todo-app-2
+def image_tag = "jenkins-todo-app:2.0"
+def container_name =  "jenkins-todo-app-2"
 pipeline {
     agent any
 
