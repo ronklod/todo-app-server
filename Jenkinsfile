@@ -1,51 +1,36 @@
 def image_name= "jenkins-todo-app:2.0"
 def container_name =  "jenkins-todo-app-2"
+
 pipeline {
     agent any
 
-     tools {nodejs "nodejs"}
-
     stages {
-//         stage('Build nodejs') {
-//             steps {
-//                 sh 'node --version'
-//                 sh 'npm install'
-//             }
-//         }
         stage ('Delete Old Containers and Images'){
             steps{
                 script{
-                        //def existingContainer = sh script: '/Applications/Docker.app/Contents/Resources/bin/docker ps -a -q  -f name=jenkins-todo-app-2 || echo error', returnStdout: true
-                        def existingContainer = sh script: "/Applications/Docker.app/Contents/Resources/bin/docker ps -a -q  -f name=$container_name || echo error", returnStdout: true
-                        echo "existing container:   $existingContainer"
-                        if (existingContainer != ""){
+                    def existingContainer = sh script: "/Applications/Docker.app/Contents/Resources/bin/docker ps -a -q  -f name=$container_name || echo error", returnStdout: true
+                    echo "existing container:   $existingContainer"
 
-                            echo 'stopping running containers....'
-
-                            def stopped =  sh script:  "/Applications/Docker.app/Contents/Resources/bin/docker stop $container_name || echo error", returnStdout: true
-
-                            def delete_container = sh script: "/Applications/Docker.app/Contents/Resources/bin/docker rm $container_name || echo error", returnStdout: true
-
-                            //if(stooped != ""){
-                            def delete_image = sh script: "/Applications/Docker.app/Contents/Resources/bin/docker rmi $image_name || echo error", returnStdout: true
-                            echo "deleted image:  $delete_image"
-                            //}
-
-                        }
-
+                    if (existingContainer != ""){
+                        echo 'stopping running container....'
+                        def stopped =  sh script:  "/Applications/Docker.app/Contents/Resources/bin/docker stop $container_name || echo error", returnStdout: true
+                        echo 'deleting existing contaier....'
+                        def delete_container = sh script: "/Applications/Docker.app/Contents/Resources/bin/docker rm $container_name || echo error", returnStdout: true
+                        echo 'deleting the image....'
+                        def delete_image = sh script: "/Applications/Docker.app/Contents/Resources/bin/docker rmi $image_name || echo error", returnStdout: true
+                        echo "image deleted:  $delete_image"
+                    }
                 }
             }
-
         }
-        stage('Build docker image'){
+        stage('Building docker image'){
             steps{
                 sh "/Applications/Docker.app/Contents/Resources/bin/docker build --tag $image_name . "
             }
         }
-        stage('Run docker container'){
+        stage('Running a docker container'){
             steps{
                 sh "/Applications/Docker.app/Contents/Resources/bin/docker run -p 8082:3001 --name $container_name -d $image_name "
-                //echo $PATH
                 echo 'browse to http://localhost:8082'
             }
         }
