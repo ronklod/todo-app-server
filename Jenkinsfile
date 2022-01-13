@@ -14,7 +14,7 @@ pipeline {
             steps{
                 script{
                         def existingContainer = sh script: '/Applications/Docker.app/Contents/Resources/bin/docker ps -a -q  -f name=jenkins-todo-app-2 || echo error', returnStdout: true
-                        echo 'existing container:  $existingContainer'
+                        echo "existing container:   $existingContainer"
                         if (existingContainer != ""){
 
                             echo 'stopping running containers....'
@@ -25,7 +25,7 @@ pipeline {
 
                             //if(stooped != ""){
                             def delete_image = sh script: '/Applications/Docker.app/Contents/Resources/bin/docker rmi jenkins-todo-app:2.0 || echo error', returnStdout: true
-                            echo 'deleted image: + $delete_image'
+                            echo "deleted image:  $delete_image"
                             //}
 
                         }
