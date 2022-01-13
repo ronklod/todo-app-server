@@ -1,4 +1,4 @@
-def image_tag = "jenkins-todo-app:2.0"
+def image_name= "jenkins-todo-app:2.0"
 def container_name =  "jenkins-todo-app-2"
 pipeline {
     agent any
@@ -27,7 +27,7 @@ pipeline {
                             def delete_container = sh script: "/Applications/Docker.app/Contents/Resources/bin/docker rm $container_name || echo error", returnStdout: true
 
                             //if(stooped != ""){
-                            def delete_image = sh script: '/Applications/Docker.app/Contents/Resources/bin/docker rmi jenkins-todo-app:2.0 || echo error', returnStdout: true
+                            def delete_image = sh script: "/Applications/Docker.app/Contents/Resources/bin/docker rmi $image_name || echo error", returnStdout: true
                             echo "deleted image:  $delete_image"
                             //}
 
@@ -39,18 +39,16 @@ pipeline {
         }
         stage('Build docker image'){
             steps{
-                sh '/Applications/Docker.app/Contents/Resources/bin/docker build --tag jenkins-todo-app:2.0 .'
+                sh "/Applications/Docker.app/Contents/Resources/bin/docker build --tag $image_name . "
             }
         }
         stage('Run docker container'){
             steps{
-                sh '/Applications/Docker.app/Contents/Resources/bin/docker run -p 8082:3001 --name jenkins-todo-app-2 -d jenkins-todo-app:2.0'
+                sh "/Applications/Docker.app/Contents/Resources/bin/docker run -p 8082:3001 --name $container_name -d $image_name "
                 //echo $PATH
                 echo 'browse to http://localhost:8082'
             }
         }
-
-
     }
 }
 
