@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const fileUpload = require('express-fileupload');
+const bodyParser = require('body-parser');
 
 //reading an environment variable to get the correct .env file.
 //I have prepared to .env files: development.env and production.env
@@ -14,6 +16,14 @@ var todoRouter = require('./routes/todo');
 var app = express();
 
 
+// enable files upload
+app.use(fileUpload({
+  createParentPath: true
+}));
+
+//add other middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

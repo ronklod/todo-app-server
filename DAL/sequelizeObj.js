@@ -18,9 +18,9 @@ const sequelize = new Sequelize("test_db", "sa",
     });
 
 const modelDefiners = [
+    // Add all the models which are being used in this application.
     require('./model/todoModel'),
-    // Add more models here...
-    // require('./models/item'),
+    require('./model/todoAttachments')
 ];
 
 // We define all models according to their files.
