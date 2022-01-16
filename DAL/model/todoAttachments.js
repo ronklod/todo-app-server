@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
         },
     }, {
         // Other model options go here
-        tableName: 'tasks_attachments'
+        tableName: 'tasks_attachments' 
     });
 };
 

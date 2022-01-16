@@ -3,7 +3,7 @@ var router = express.Router();
 var fs = require('fs');
 var sequelize = require('../DAL/sequelizeObj');
 const {QueryTypes} = require("sequelize");
-const BSON = require('bson');
+const BSON = require('bson');    
 
 /* save a new task in the DB. */
 router.post('/', async function(req, res, next) {

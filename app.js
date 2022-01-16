@@ -11,7 +11,7 @@ const bodyParser = require('body-parser');
 //when running npm start, it will set the NODE_ENV environment variable to development, it is written in the package.json file
 //for example when running from Docker it will work with the production.env file
 require('dotenv').config({ path: `${process.env.NODE_ENV}.env` })
-
+ 
 var todoRouter = require('./routes/todo');
 var app = express();
 
