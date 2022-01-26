@@ -19,7 +19,7 @@ pipeline {
 
                                if(sqlserver_installed != ""){
                                     echo 'starting the sql server'
-                                    def sqlserver_is_starting = sh script:  "/Applications/Docker.app/Contents/Resources/bin/docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=sa_admin_1" -p 1433:1433 --name mssql_2019 -d mcr.microsoft.com/mssql/server:2019-latest"
+                                    def sqlserver_is_starting = sh script:  "/Applications/Docker.app/Contents/Resources/bin/docker run -e \"ACCEPT_EULA=Y\" -e \"SA_PASSWORD=sa_admin_1\" -p 1433:1433 --name mssql_2019 -d mcr.microsoft.com/mssql/server:2019-latest"
 
                                     //checking that the sql server is running
                                     if(sqlserver_is_starting !=""){
