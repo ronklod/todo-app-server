@@ -22,6 +22,10 @@ module.exports = (sequelize) => {
         attachment_id:{
             type: DataTypes.INTEGER,
             allowNull: true 
+        },
+        category_id: {
+            type: DataTypes.INTEGER,
+            allowNull: true
         }
     }, {
         // Other model options go here

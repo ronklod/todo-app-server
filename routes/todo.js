@@ -30,7 +30,8 @@ router.post('/', async function(req, res, next) {
                 content: formData.content,
                 isCompleted: false,
                 dueDate: formData.dueDate,
-                attachment_id: (attachment_row != null) ? attachment_row.dataValues.id : null
+                attachment_id: (attachment_row != null) ? attachment_row.dataValues.id : null,
+                category_id: formData.category_id
             },{transaction :t}).then(result =>{
                res.status(200).send(JSON.stringify(result));
             });
