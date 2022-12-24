@@ -1,5 +1,5 @@
 
-## Available Scripts
+## Installation instructions:
 
 This is the server project which contains the following:
 1. the server logic of the todo app
